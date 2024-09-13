@@ -3,8 +3,6 @@ using System.IO;
 using System.Collections;
 namespace EspacioPrograma
 {
-
-
     public class Pedido
     {
         public enum EstadoPedido

@@ -1,25 +1,28 @@
-public class HelperDeArchivo
+namespace EspacioPrograma
 {
-    public static List<string[]>? LeerCsv(string nombreArchivo)
+    public class HelperDeArchivo
     {
-        var LecturaDelArchivo = new List<string[]>();
-        if (File.Exists(nombreArchivo))
+        public static List<string[]>? LeerCsv(string nombreArchivo)
         {
-            var archivo = new FileStream(nombreArchivo, FileMode.Open);
-            var strReader = new StreamReader(archivo);
-            var linea = "";
-            while ((linea = strReader.ReadLine()) != null)
+            var LecturaDelArchivo = new List<string[]>();
+            if (File.Exists(nombreArchivo))
             {
-                string[] arregloLinea = linea.Split(',');
-                LecturaDelArchivo.Add(arregloLinea);
+                var archivo = new FileStream(nombreArchivo, FileMode.Open);
+                var strReader = new StreamReader(archivo);
+                var linea = "";
+                while ((linea = strReader.ReadLine()) != null)
+                {
+                    string[] arregloLinea = linea.Split(',');
+                    LecturaDelArchivo.Add(arregloLinea);
+                }
+                strReader.Close();
             }
-            strReader.Close();
+            else
+            {
+                Console.WriteLine("Archivo no encontrado: {0}", nombreArchivo);
+                return null;
+            }
+            return LecturaDelArchivo;
         }
-        else
-        {
-            Console.WriteLine("Archivo no encontrado: {0}", nombreArchivo);
-            return null;
-        }
-        return LecturaDelArchivo;
     }
 }

@@ -1,6 +1,5 @@
 namespace EspacioPrograma
 {
-
 public class Cliente
 {
     private string nombre;

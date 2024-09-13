@@ -1,7 +1,5 @@
 namespace EspacioPrograma
 {
-
-
     public class Cadeteria
     {
         private string nombre;
