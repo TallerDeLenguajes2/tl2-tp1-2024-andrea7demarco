@@ -4,25 +4,48 @@ namespace EspacioPrograma
     {
         private string nombre;
         private string telefono;
-        private List<Cadete> listadoCadetes;
+        
         private int totalEnvios;
         private float totalGanado;
         private double cantPromEnvios;
+        private List<Pedido> listadoPedidos;
+        private List<Cadete> listadoCadetes;
 
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Telefono { get => telefono; set => telefono = value; }
-        public int TotalEnvios { get => totalEnvios; set => totalEnvios = value; }
-        public float TotalGanado { get => totalGanado; set => totalGanado = value; }
-        public double CantPromEnvios { get => cantPromEnvios; set => cantPromEnvios = value; }
-
-        public Cadeteria(string name, string phone, List<Cadete> lista)
+        public string Nombre { get => nombre; set => nombre = value;}
+        public string Telefono { get => telefono; set => telefono = value;}
+        public List<Pedido> ListadoPedidos { get => listadoPedidos; set => listadoPedidos =value;}
+        public List<Cadete> ListadoCadetes { get => listadoCadetes; set => listadoCadetes =value;}
+        public Cadeteria(string name, string phone, List<Cadete> lista1, List<Pedido> lista2)
         {
             this.nombre = name;
             this.telefono = phone;
             this.listadoCadetes = new List<Cadete>();
-            this.listadoCadetes.AddRange(lista);
+            this.listadoPedidos = new List<Pedido>();
         }
-        public void Mostrar()
+
+        public Cadeteria()
+        {
+            this.nombre = "";
+            this.telefono = "";
+            this.listadoCadetes = new List<Cadete>();
+            this.listadoPedidos = new List<Pedido>();
+        }
+
+        public void DarDeAlta(int nroPedido)
+        {
+            Console.WriteLine("Ingrese nombre del cliente\n");
+            var nombreCliente = Console.ReadLine();
+            Console.WriteLine("Direccion:\n");
+            var direccion = Console.ReadLine();
+            Console.WriteLine("Telefono:\n");
+            var telefonoCliente = Console.ReadLine();
+            Console.WriteLine("Ingrese el nombre del pedido\n");
+            var DatosCliente = new Cliente(nombreCliente,telefonoCliente,direcccionCliente)
+            var nombrePedido = Console.ReadLine();
+            Console.WriteLine("Ingrese datos de referencia\n");
+            var datosRef = Console.ReadLine();
+        }
+/*        public void Mostrar()
         {
             int contador = 1;
             Console.WriteLine($"Nombre: {this.nombre}");
@@ -64,5 +87,13 @@ namespace EspacioPrograma
             Console.WriteLine($"TOTAL ENVIOS: {this.TotalEnvios}");
             Console.WriteLine($"PROMEDIO DE ENVIOS: {this.CantPromEnvios}");
         }
+
+        public void AsignarPedido(Pedido pedido)
+        {
+            this.listadoPedidos.Add(pedido);
+            this.CantidadEnvios += 1;
+            this.CalcularGanancia();
+        }
     }
+    */
 }

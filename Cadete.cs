@@ -6,7 +6,7 @@ namespace EspacioPrograma
         private string nombre;
         private string direccion;
         private string telefono;
-        private List<Pedido> listadoPedidos;
+       // private List<Pedido> listadoPedidos;
         public int CantidadEnvios;
         public float CantidadGanado;
 
@@ -21,7 +21,7 @@ namespace EspacioPrograma
             this.nombre = nombre;
             this.direccion = direccion;
             this.telefono = telefono;
-            this.listadoPedidos = new List<Pedido>();
+           // this.listadoPedidos = new List<Pedido>();
             this.CantidadEnvios = 0;
             this.CantidadGanado = 0;
         }
@@ -32,19 +32,18 @@ namespace EspacioPrograma
             this.nombre = "";
             this.direccion = "";
             this.telefono = "";
-            this.listadoPedidos = new List<Pedido>();
+        //    this.listadoPedidos = new List<Pedido>();
             this.CantidadEnvios = 0;
             this.CantidadGanado = 0;
 
         }
 
-
-        public void TomarPedido(Pedido pedido)
+/*        public void TomarPedido(Pedido pedido)
         {
             this.listadoPedidos.Add(pedido);
         }
-
-        public void Mostrar()
+*/
+      public void Mostrar()
         {
             int contador = 0;
             Console.WriteLine($"ID : {this.id}");
@@ -52,23 +51,24 @@ namespace EspacioPrograma
             Console.WriteLine($"Direccion: {this.direccion}");
             Console.WriteLine($"Telefono: {this.telefono}");
             Console.WriteLine("----Listado de pedidos----\n");
-            foreach (var item in this.listadoPedidos)
+        /*    foreach (var item in this.listadoPedidos)
             {
                 Console.WriteLine($"////pedido nro {contador}////");
                 item.Mostrar();
                 contador += 1;
             }
-
+    */
         }
+     
 
-        public void AsignarPedido(Pedido pedido)
+/*       public void AsignarPedido(Pedido pedido)
         {
             this.listadoPedidos.Add(pedido);
             this.CantidadEnvios += 1;
             this.CalcularGanancia();
         }
 
-        public void RechazarPedido(Pedido pedido)
+       public void RechazarPedido(Pedido pedido)
         {
             if (this.listadoPedidos.Contains(pedido))
             {
@@ -77,7 +77,7 @@ namespace EspacioPrograma
                 this.CalcularGanancia();
             }
         }
-
+*/
         private void CalcularGanancia()
         {
             this.CantidadGanado = this.CantidadEnvios * 500;
