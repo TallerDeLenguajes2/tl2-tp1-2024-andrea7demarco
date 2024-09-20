@@ -7,6 +7,6 @@ using System.Linq;
 
 
 var sistemaCadeteria = new SistemaCadeteria();
-sistemaCadeteria.Ejecutar();
+sistemaCadeteria.ManejarPedidos();
 
 
