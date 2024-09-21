@@ -2,7 +2,7 @@ namespace EspacioPrograma
 {
     public class HelperDeArchivo
     {
-        public static List<string[]>? LeerCsv(string nombreArchivo)
+        public static List<string[]> LeerCsv(string nombreArchivo)
         {
             var LecturaDelArchivo = new List<string[]>();
             if (File.Exists(nombreArchivo))
