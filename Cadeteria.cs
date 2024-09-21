@@ -29,21 +29,11 @@ namespace EspacioPrograma
             this.listadoPedidos = new List<Pedido>();
         }
 
-       public void DarDeAlta(int nroDePedido)
+        public void DarDeAlta(int nroDePedido, string nombreCliente, string direccionCliente, string telefonoCliente, string datosReferencia, string observaciones)
         {
-        Console.WriteLine("Ingrese el nombre del cliente");
-        var nombreCliente = Console.ReadLine();
-        Console.WriteLine("Ingrese la direccion donde vive");
-        var direccionCliente = Console.ReadLine();
-        Console.WriteLine("Ingrese el telefono del cliente");
-        var telefonoCliente = Console.ReadLine();
-        Console.WriteLine("Ingrese los datos de Referencia");
-        var datosReferencia = Console.ReadLine();
-        var datosCliente = new Cliente(nombreCliente, direccionCliente, telefonoCliente, datosReferencia);
-        Console.WriteLine("Ingrese l nombre que tenga del pedido");
-        var observaciones = Console.ReadLine();
-        var PedidoTomado = new Pedido(nroDePedido, observaciones, datosCliente);
-        this.listadoPedidos.Add(PedidoTomado);
+            var datosCliente = new Cliente(nombreCliente, direccionCliente, telefonoCliente, datosReferencia);
+            var PedidoTomado = new Pedido(nroDePedido, observaciones, datosCliente);
+            this.listadoPedidos.Add(PedidoTomado);
         }
 
 
@@ -99,31 +89,30 @@ namespace EspacioPrograma
         }
         public string Mostrar()
         {
-            int contador=0;
-            var cadena=@$"Nombre: {this.nombre}
+            int contador = 0;
+            var cadena = @$"Nombre: {this.nombre}
             Telefono: {this.telefono}";
             foreach (var item in listadoCadetes)
             {
-                cadena+=(@$"||||||||||CLIENTE {contador}|||||||||||||||\n");
-                cadena+=item.Mostrar();
+                cadena += (@$"||||||||||CLIENTE {contador}|||||||||||||||\n");
+                cadena += item.Mostrar();
                 contador += 1;
             }
-            return(cadena);
+            return (cadena);
         }
 
-        public void MostrarPedidosPendientes()
-{
-    string cadena = "=============PEDIDOS PENDIENTES=============\n";
-    foreach (var item in this.listadoPedidos)
-    {
-        if (item.Estado == EstadoPedido.pendiente)
+        public string MostrarPedidosPendientes()
         {
-            cadena += item.Mostrar() + "\n"; // Añadir un salto de línea para separar los pedidos
+            string cadena = "=============PEDIDOS PENDIENTES=============\n";
+            foreach (var item in this.listadoPedidos)
+            {
+                if (item.Estado == EstadoPedido.pendiente)
+                {
+                    cadena += item.Mostrar() + "\n";
+                }
+            }
+            return cadena;
         }
+
     }
-    Console.WriteLine(cadena); // Muestra en la consola
 }
-
-    }
-
-  }

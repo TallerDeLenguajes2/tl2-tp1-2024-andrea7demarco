@@ -70,9 +70,10 @@ namespace EspacioPrograma
             switch (opciones)
             {
                 case 1:
-                    cadeteriaSeleccionada.DarDeAlta(nroDePedido);
+                    var datosAlta = LeerDatosParaDarDeAlta();
+                    cadeteriaSeleccionada.DarDeAlta(nroDePedido, datosAlta[0], datosAlta[1], datosAlta[2], datosAlta[3], datosAlta[4]);
                     nroDePedido += 1;
-                    cadeteriaSeleccionada.MostrarPedidosPendientes();
+                    Console.WriteLine(cadeteriaSeleccionada.MostrarPedidosPendientes());
                     break;
                 case 2:
                     AsignarPedidoACadete(cadeteriaSeleccionada);
@@ -232,6 +233,29 @@ namespace EspacioPrograma
             return nuevaLista;
 
         }
+
+        private static string[] LeerDatosParaDarDeAlta()
+        {
+            string[] datos = new string[5];
+
+            Console.WriteLine("Ingrese el nombre del cliente:");
+            datos[0] = Console.ReadLine();
+
+            Console.WriteLine("Ingrese la dirección donde vive el cliente:");
+            datos[1] = Console.ReadLine();
+
+            Console.WriteLine("Ingrese el teléfono del cliente:");
+            datos[2] = Console.ReadLine();
+
+            Console.WriteLine("Ingrese los datos de referencia del cliente:");
+            datos[3] = Console.ReadLine();
+
+            Console.WriteLine("Ingrese las observaciones del pedido:");
+            datos[4] = Console.ReadLine();
+
+            return datos;
+        }
+
     }
 }
 
