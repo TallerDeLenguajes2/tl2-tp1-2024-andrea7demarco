@@ -24,7 +24,7 @@ namespace EspacioPrograma
             int envios = 0;
             foreach (var pedido in listadoPedidos)
             {
-                if (pedido.Estado == Pedido.EstadoPedido.aceptado)
+                if (pedido.Estado == EstadoPedido.aceptado)
                 {
                     envios++;
                 }

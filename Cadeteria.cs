@@ -6,10 +6,6 @@ namespace EspacioPrograma
     {
         private string nombre;
         private string telefono;
-
-        private int totalEnvios;
-        private float totalGanado;
-        private double cantPromEnvios;
         private List<Pedido> listadoPedidos;
         private List<Cadete> listadoCadetes;
 
@@ -33,23 +29,23 @@ namespace EspacioPrograma
             this.listadoPedidos = new List<Pedido>();
         }
 
-        public void DarDeAlta(int nroPedido)
+       public void DarDeAlta(int nroDePedido)
         {
-            Console.WriteLine("Ingrese nombre del cliente\n");
-            var nombreCliente = Console.ReadLine();
-            Console.WriteLine("Direccion:\n");
-            var direccionCliente = Console.ReadLine();
-            Console.WriteLine("Telefono:\n");
-            var telefonoCliente = Console.ReadLine();
-            Console.WriteLine("Ingrese datos de referencia\n");
-            var datosRef = Console.ReadLine();
-            var datosCliente = new Cliente(nombreCliente, telefonoCliente, direccionCliente, datosRef);
-            Console.WriteLine("Ingrese el nombre del pedido");
-            var nombrePedido = Console.ReadLine();
-            var PedidoTomado = new Pedido(nroPedido, nombrePedido, datosCliente);
-
-
+        Console.WriteLine("Ingrese el nombre del cliente");
+        var nombreCliente = Console.ReadLine();
+        Console.WriteLine("Ingrese la direccion donde vive");
+        var direccionCliente = Console.ReadLine();
+        Console.WriteLine("Ingrese el telefono del cliente");
+        var telefonoCliente = Console.ReadLine();
+        Console.WriteLine("Ingrese los datos de Referencia");
+        var datosReferencia = Console.ReadLine();
+        var datosCliente = new Cliente(nombreCliente, direccionCliente, telefonoCliente, datosReferencia);
+        Console.WriteLine("Ingrese l nombre que tenga del pedido");
+        var observaciones = Console.ReadLine();
+        var PedidoTomado = new Pedido(nroDePedido, observaciones, datosCliente);
+        this.listadoPedidos.Add(PedidoTomado);
         }
+
 
         public void TomarPedido(int id)
         {
@@ -74,7 +70,7 @@ namespace EspacioPrograma
             }
 
             int totalPedidos = this.ListadoPedidos
-                                .Count(p => p.CadeteAsignado == cad && p.Estado == Pedido.EstadoPedido.aceptado);
+                                .Count(p => p.CadeteAsignado == cad && p.Estado == EstadoPedido.aceptado);
 
             return totalPedidos * 500;
         }
@@ -101,30 +97,33 @@ namespace EspacioPrograma
                 ValidacionPed.AceptarPedido();
             }
         }
-        public void Mostrar()
+        public string Mostrar()
         {
-            int contador = 0;
-            Console.WriteLine($"Nombre: {this.nombre}");
-            Console.WriteLine($"Telefono: {this.telefono}");
+            int contador=0;
+            var cadena=@$"Nombre: {this.nombre}
+            Telefono: {this.telefono}";
             foreach (var item in listadoCadetes)
             {
-                Console.WriteLine($"||||||||||CLIENTE {contador}|||||||||||||||");
-                item.Mostrar();
+                cadena+=(@$"||||||||||CLIENTE {contador}|||||||||||||||\n");
+                cadena+=item.Mostrar();
                 contador += 1;
             }
+            return(cadena);
         }
 
         public void MostrarPedidosPendientes()
+{
+    string cadena = "=============PEDIDOS PENDIENTES=============\n";
+    foreach (var item in this.listadoPedidos)
+    {
+        if (item.Estado == EstadoPedido.pendiente)
         {
-            Console.WriteLine("==PEDIDOS PENDIENTES===\n");
-            foreach (var item in this.listadoPedidos)
-            {
-                if (item.Estado == Pedido.EstadoPedido.pendiente)
-                {
-                    item.Mostrar();
-                }
-            }
+            cadena += item.Mostrar() + "\n"; // Añadir un salto de línea para separar los pedidos
         }
+    }
+    Console.WriteLine(cadena); // Muestra en la consola
+}
+
     }
 
   }
